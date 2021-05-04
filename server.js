@@ -8,6 +8,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(router); //el ruter debe estar al final
 
 router.get("/message", (req, res) => {
+  console.log(req.headers);
   res.send("lista de mensajes");
 });
 
