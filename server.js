@@ -20,7 +20,14 @@ router.post("/message", (req, res) => {
   console.log(req.query);
   console.log(`mensaje ${req.body.text} añadido correctamente`);
 
-  res.send("mensaje agregado");
+  //Tpos de respuestas
+  //res.send(); vacia
+  //res.status(201).send(); estado
+  res.status(201).send({
+    error: "",
+    body: "Created correctly",
+  });
 });
+
 app.listen(3000);
 console.log("la app esta escuchando en http://localhost:3000");
