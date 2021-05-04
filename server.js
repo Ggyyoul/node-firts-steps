@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router(); //buscar en la documentacion
-
+const response = require("./network/response");
 let app = express();
 
 app.use(express.json());
@@ -12,7 +12,7 @@ router.get("/message", (req, res) => {
   res.header({
     custom: "Nuestro valor personalizado", // crear header personalizado
   });
-  res.send("lista de mensajes");
+  response.success(req, res, "lista de mensajes");
 });
 
 router.post("/message", (req, res) => {
@@ -20,13 +20,12 @@ router.post("/message", (req, res) => {
   console.log(req.query);
   console.log(`mensaje ${req.body.text} añadido correctamente`);
 
-  //Tpos de respuestas
-  //res.send(); vacia
-  //res.status(201).send(); estado
-  res.status(201).send({
-    error: "",
-    body: "Created correctly",
-  });
+  if (req.query.error == "ok") {
+    // si la query "error" tiene el valor "ok"
+    response.error(req, res, "error simmulado", 400);
+  } else {
+    response.success(req, res, "Mensaje agregado correctamente", 201);
+  }
 });
 
 app.listen(3000);
