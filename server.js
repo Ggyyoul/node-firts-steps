@@ -9,13 +9,16 @@ app.use(router); //el ruter debe estar al final
 
 router.get("/message", (req, res) => {
   console.log(req.headers);
+  res.header({
+    custom: "Nuestro valor personalizado", // crear header personalizado
+  });
   res.send("lista de mensajes");
 });
 
 router.post("/message", (req, res) => {
   console.log(req.body);
   console.log(req.query);
-  console.log(req.body.text);
+  console.log(`mensaje ${req.body.text} añadido correctamente`);
 
   res.send("mensaje agregado");
 });
