@@ -4,10 +4,9 @@ const controller = require("./controller");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const filterUser = req.query.name || null;
   controller
-    .getUser(req.body.id)
-    .then((data) => response.success(req, res, data, 200))
+    .listUsers()
+    .then((users) => response.success(req, res, users, 200))
     .catch((e) => response.error(req, res, "Internal error", 500, e));
 });
 

@@ -10,10 +10,10 @@ let addUser = (name) => {
   return store.add(user);
 };
 
-let getUser = (filterUser) => {
-  return Promise.resolve(store.list(filterUser));
+let listUsers = () => {
+  return store.list();
 };
 module.exports = {
   addUser,
-  getUser,
+  listUsers,
 };
