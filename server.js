@@ -22,7 +22,13 @@ router.post("/message", (req, res) => {
 
   if (req.query.error == "ok") {
     // si la query "error" tiene el valor "ok"
-    response.error(req, res, "error simmulado", 400);
+    response.error(
+      req,
+      res,
+      "error inesperado",
+      500,
+      "es solo una simulacion de los errores"
+    );
   } else {
     response.success(req, res, "Mensaje agregado correctamente", 201);
   }
